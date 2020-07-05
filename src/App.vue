@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <Home title="Memory Game"/>
+    <header>
+      <h1>Memory Game</h1>
+    </header>
+    <div class="nav">
+      <router-link to="/">Play</router-link> /
+      <router-link to="/Instructions">How to play</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
 
 export default {
   name: 'App',
-  components: {
-    Home
-  }
 }
 </script>
 
