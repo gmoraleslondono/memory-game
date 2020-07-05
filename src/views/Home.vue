@@ -7,9 +7,6 @@
 <script>
 export default {
   name: 'Home',
-  props: {
-    title: String
-  }
 }
 </script>
 
