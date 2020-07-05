@@ -2,11 +2,11 @@
   <div id="app">
     <header>
       <h1>Memory Game</h1>
+      <div class="nav">
+        <router-link to="/">Play</router-link>
+        <router-link to="/Instructions">How to play</router-link>
+      </div>
     </header>
-    <div class="nav">
-      <router-link to="/">Play</router-link> /
-      <router-link to="/Instructions">How to play</router-link>
-    </div>
     <router-view/>
     <footer>🛠 By Gloria Morales with ❤️</footer>
   </div>
@@ -30,9 +30,21 @@ export default {
 }
 #app {
   font-family: 'Nunito', sans-serif;
-  width: 80%;
   margin: 5% auto;
   color: #fff;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5%;
+}
+.nav a {
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0 20px;
+  color: lightseagreen;
 }
 footer {
   position: fixed;
