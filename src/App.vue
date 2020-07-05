@@ -19,19 +19,19 @@ export default {
 }
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+<style lang="scss">
+@import 'styles/global-colors.scss';
+@import 'styles/global-texts.scss';
 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: #121212;
+  background-color: $black;
 }
 #app {
-  font-family: 'Nunito', sans-serif;
   margin: 5% auto;
-  color: #fff;
+  color: $white;
 }
 header {
   display: flex;
@@ -44,7 +44,7 @@ header {
   text-decoration: none;
   font-size: 20px;
   margin: 0 20px;
-  color: lightseagreen;
+  color: $blue;
 }
 footer {
   position: fixed;
@@ -52,6 +52,6 @@ footer {
   width: 100%;
   text-align: center;
   padding: 2%;
-  color: #fff;
+  color: $white;
 }
 </style>
