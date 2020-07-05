@@ -1,12 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>{{ title }}</h1>
+  <div class="home">
+    <h1>Let's play</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   props: {
     title: String
   }
