@@ -1,0 +1,27 @@
+//Please include this file in all your components to share the styles, colors and fonts.
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+p, span, a {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
