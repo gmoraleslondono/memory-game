@@ -19,5 +19,14 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#app {
+  font-family: 'Nunito', sans-serif;
+}
 </style>
