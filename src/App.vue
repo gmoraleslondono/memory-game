@@ -8,6 +8,7 @@
       <router-link to="/Instructions">How to play</router-link>
     </div>
     <router-view/>
+    <footer>🛠 By Gloria Morales with ❤️</footer>
   </div>
 </template>
 
@@ -25,8 +26,20 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  background-color: #121212;
 }
 #app {
   font-family: 'Nunito', sans-serif;
+  width: 80%;
+  margin: 5% auto;
+  color: #fff;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 2%;
+  color: #fff;
 }
 </style>
