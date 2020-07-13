@@ -16,12 +16,17 @@
               <p class="moves">Moves: {{ numMoves }}</p>
           </div>
         </section>
+        <section id="cards">
+          <ul class="">
+            <li v-for="(card, index) in deck.cards" :key="index">{{card}}</li>
+          </ul>
+        </section>
     </main>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: 'Home',
@@ -29,7 +34,14 @@ export default {
     ...mapState ([
       "stars",
       "numMoves",
-    ])
+      "types",
+      "gameAnnounce",
+      "win",
+      "cardsFlipped",
+      "numCardsFlipedd",
+      "cardsMatched",
+    ]),
+    ...mapGetters(["deck"])
   }
 }
 </script>
