@@ -54,4 +54,16 @@ footer {
   padding: 2%;
   color: $white;
 }
+.cards {
+  .card {
+    background: #061018;
+  }
+  .show {
+    background: #0b5891;
+  }
+
+  .match {
+    background: #0e4b5a;
+  }
+}
 </style>

@@ -17,8 +17,14 @@
           </div>
         </section>
         <section id="cards">
-          <ul class="">
-            <li v-for="(card, index) in deck.cards" :key="index">{{card}}</li>
+          <ul class="cards">
+            <li class="cardItem" v-for="(card, index) in deck.cards" :key="index">
+              {{card.name}}
+              <button :class="[card.match ? 'card match' : card.flipped ? 'card show' : card.close ? 'card close' : 'card']">
+                <span v-if="!card.flipped">?</span>
+                <div v-else :class="deck.cards[index].icon"></div>
+              </button>
+            </li>
           </ul>
         </section>
     </main>
@@ -97,4 +103,68 @@ export default {
 .fa-repeat {
   background-color: $orange;
 }
+
+// Cards
+.cards {
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5em;
+  padding: 0;
+
+  .cardItem {
+    list-style: none;
+  }
+
+  .card {
+    height: 90px;
+    width: 90px;
+    font-size: 4em;
+    background: #061018 url(/img/fabric.5959b418.png);
+    background-blend-mode: soft-light;
+    border: 1px solid #acacac;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  }
+  .show {
+    font-size: 33px;
+    background: #0b5891 url(/img/fabric.5959b418.png);
+    cursor: default;
+  }
+
+  .match {
+    cursor: default;
+    background: #0e4b5a url(/img/fabric.5959b418.png);
+    font-size: 33px;
+    animation-name: match-animation;
+    -webkit-animation-name: match-animation;
+    animation-duration: 1000ms;
+    -webkit-animation-duration: 1000ms;
+    transform-origin: 70% 70%;
+    animation-iteration-count: 1000ms;
+    animation-timing-function: linear;
+  }
+
+  .close {
+    cursor: default;
+    animation-name: close;
+    -webkit-animation-name: close;
+    animation-duration: 1000ms;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    &:hover,
+    &:focus {
+      background-blend-mode: hard-light;
+      color: #112c3e;
+      border: 2px solid #112c3e;
+    }
+  }
+}
+
 </style>
