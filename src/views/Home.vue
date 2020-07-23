@@ -52,7 +52,7 @@ export default {
     ...mapGetters(["deck"]),
   },
   methods: {
-  ...mapActions(["update_NumMoves", ]),
+  ...mapActions(["update_NumMoves", "clear_CardsFlipped", "update_CardsFlipped", "update_NumCardsFlipped" ]),
     shuffle(cards) {
       this.deck.cards = [];
       var currentIndex = cards.length,
@@ -77,7 +77,12 @@ export default {
         return;
       } else {
         this.update_NumMoves({ moves: this.numMoves + 1 });
-        card.flipped = true;
+      }
+      // only allow flips if there are < or = 2 flipped cards
+      if (this.numCardsFlipped < 2) {
+      card.flipped = true;
+      this.update_NumCardsFlipped({ num: this.numCardsFlipped + 1 });
+      this.update_CardsFlipped({ cards: card });
       }
     },
   },
