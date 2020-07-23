@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     stars: 3,
     numMoves: 0,
-    types: ["horse", "bomb", "carrot", "crown", "gift", "hotjar", "paper-plane", "user-astronaut"]
+    types: ["horse", "bomb", "carrot", "crown", "gift", "hotjar", "paper-plane", "user-astronaut"],
+    cardsFlipped: [],
+    numCardsFlipped: 0,
   },
   getters: {
     deck: (state) => {
@@ -34,7 +36,14 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    UPDATE_NUMMOVES(state, payload) {
+      console.log("this is the payload", payload)
+      state.numMoves = payload;
+    },
   },
   actions: {
+    update_NumMoves({ commit }, {moves}) {
+      commit("UPDATE_NUMMOVES", moves);
+    },
   }
 })

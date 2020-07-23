@@ -20,7 +20,9 @@
           <ul class="cards">
             <li class="cardItem" v-for="(card, index) in deck.cards" :key="index">
               {{card.name}}
-              <button :class="[card.match ? 'card match' : card.flipped ? 'card show' : card.close ? 'card close' : 'card']">
+              <button :class="[card.match ? 'card match' : card.flipped ? 'card show' : card.close ? 'card close' : 'card']"
+              @click="flipCard(card)"
+              >
                 <span v-if="!card.flipped">?</span>
                 <div v-else :class="deck.cards[index].icon"></div>
               </button>
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   name: 'Home',
@@ -44,12 +46,13 @@ export default {
       "gameAnnounce",
       "win",
       "cardsFlipped",
-      "numCardsFlipedd",
+      "numCardsFlipped",
       "cardsMatched",
     ]),
-    ...mapGetters(["deck"])
+    ...mapGetters(["deck"]),
   },
   methods: {
+  ...mapActions(["update_NumMoves", ]),
     shuffle(cards) {
       this.deck.cards = [];
       var currentIndex = cards.length,
@@ -68,7 +71,15 @@ export default {
       }
 
       this.deck.cards = cards;
-    }
+    },
+    flipCard(card) {
+      if (card.flipped) {
+        return;
+      } else {
+        this.update_NumMoves({ moves: this.numMoves + 1 });
+        card.flipped = true;
+      }
+    },
   },
   created() {
     this.shuffle(this.deck.cards);
