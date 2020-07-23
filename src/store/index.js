@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     stars: 3,
     numMoves: 0,
-    types: ["horse", "bomb", "carrot", "crown", "gift", "hotjar", "paper-plane", "user-astronaut"],
+    types: ["camera-retro", "bomb", "bug", "heart", "gift", "anchor", "paper-plane", "ambulance"],
     cardsFlipped: [],
     numCardsFlipped: 0,
   },

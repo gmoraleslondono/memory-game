@@ -157,8 +157,8 @@ export default {
   }
 
   .card {
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
     font-size: 4em;
     background: #061018 url(/img/fabric.5959b418.png);
     background-blend-mode: soft-light;
@@ -172,8 +172,8 @@ export default {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
   }
   .show {
-    font-size: 33px;
-    background: #0b5891 url(/img/fabric.5959b418.png);
+    font-size: 43px;
+    //background: #0b5891 url(/img/fabric.5959b418.png);
     cursor: default;
   }
 
