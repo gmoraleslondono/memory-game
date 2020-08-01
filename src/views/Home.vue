@@ -3,7 +3,7 @@
     <h1>Let's play</h1>
       <main class="container">
         <section>
-          <button class="restart" style="background-color: orange">
+          <button class="restart" style="background-color: orange" @click="newGame">
               <i class="fa fa-repeat"></i>
               Reset
           </button>
@@ -52,7 +52,7 @@ export default {
     ...mapGetters(["deck"]),
   },
   methods: {
-  ...mapActions(["update_NumMoves", "clear_CardsFlipped", "update_CardsFlipped", "update_NumCardsFlipped", "clear_CardsMatched", "update_CardsMatched", "update_Stars", "update_Win" ]),
+  ...mapActions(["update_NumMoves", "clear_CardsFlipped", "update_CardsFlipped", "update_NumCardsFlipped", "clear_CardsMatched", "update_CardsMatched", "update_Stars", "update_Win", "clearGame" ]),
     shuffle(cards) {
       this.deck.cards = [];
       var currentIndex = cards.length,
@@ -131,7 +131,18 @@ export default {
           }, 500);
         }
       }
-    }
+    },
+    newGame() {
+      this.shuffle(this.deck.cards);
+
+      for (let i = 0; i < this.deck.cards.length; i++) {
+          this.deck.cards[i].flipped = false;
+          this.deck.cards[i].close = false;
+          this.deck.cards[i].match = false;
+      }
+
+      this.clearGame();
+    },
   },
   created() {
     this.shuffle(this.deck.cards);

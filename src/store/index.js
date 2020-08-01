@@ -89,5 +89,18 @@ export default new Vuex.Store({
     update_Stars({ commit }, { num }) {
         commit("UPDATE_STARS", num);
     },
+    async clearGame({ commit, dispatch }) {
+      try {
+      await dispatch("update_Win", { win: false });
+      await dispatch("update_Stars", { num: 3 });
+      await dispatch("clear_CardsFlipped", { cards: [] });
+      await dispatch("update_NumCardsFlipped", { num: 0 });
+      await dispatch("update_NumMoves", { moves: 0 });
+      await dispatch("clear_CardsMatched", { cards: [] });
+      await dispatch("update_GameAnnounce", { message: "" });
+      } catch (error) {
+      commit("ERROR", error);
+      }
+    },
   }
 })
