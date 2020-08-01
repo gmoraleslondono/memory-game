@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cardsFlipped: [],
     numCardsFlipped: 0,
     cardsMatched: [],
+    win: false,
   },
   getters: {
     deck: (state) => {
@@ -56,6 +57,12 @@ export default new Vuex.Store({
     UPDATE_CARDSMATCHED(state, payload) {
         state.cardsMatched.push(payload);
     },
+    UPDATE_WIN(state, payload) {
+      state.win = payload;
+    },
+    UPDATE_STARS(state, payload) {
+        state.stars = payload;
+    },
   },
   actions: {
     update_NumMoves({ commit }, {moves}) {
@@ -75,6 +82,12 @@ export default new Vuex.Store({
     },
     update_CardsMatched({ commit }, { cards }) {
         commit("UPDATE_CARDSMATCHED", cards);
+    },
+    update_Win({ commit }, { win }) {
+      commit("UPDATE_WIN", win);
+    },
+    update_Stars({ commit }, { num }) {
+        commit("UPDATE_STARS", num);
     },
   }
 })

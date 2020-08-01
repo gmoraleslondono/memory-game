@@ -77,6 +77,15 @@ export default {
         return;
       } else {
         this.update_NumMoves({ moves: this.numMoves + 1 });
+        if (this.numMoves < 30) {
+            this.update_Stars({ num: 3 });
+        } else if (this.numMoves < 40) {
+            this.update_Stars({ num: 2 });
+        } else if (this.numMoves < 50) {
+            this.update_Stars({ num: 1 });
+        } else if (this.numMoves > 50) {
+            this.update_Stars({ num: 0 });
+        }
       }
       // only allow flips if there are < or = 2 flipped cards
       if (this.numCardsFlipped < 2) {
@@ -97,6 +106,10 @@ export default {
           this.update_CardsMatched({ cards: this.cardsFlipped });
           this.clear_CardsFlipped({ cards: [] });
           this.update_NumCardsFlipped({ num: 0 });
+          // if number of cards matched = number or cards, then win the game
+          if (this.cardsMatched.length === this.deck.cards.length / 2) {
+              this.update_Win({ win: true });
+          }
         }
           // NO MATCH
         else if (
