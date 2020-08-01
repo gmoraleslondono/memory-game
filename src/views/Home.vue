@@ -18,7 +18,7 @@
         </section>
         <section id="cards">
           <ul class="cards">
-            <li class="cardItem" v-for="(card, index) in deck.cards" :key="index">
+            <li class="cardItem" v-for="(card, index) in this.deck.cards" :key="index">
               {{card.name}}
               <button :class="[card.match ? 'card match' : card.flipped ? 'card show' : card.close ? 'card close' : 'card']"
               @click="flipCard(card)"
@@ -52,7 +52,7 @@ export default {
     ...mapGetters(["deck"]),
   },
   methods: {
-  ...mapActions(["update_NumMoves", "clear_CardsFlipped", "update_CardsFlipped", "update_NumCardsFlipped" ]),
+  ...mapActions(["update_NumMoves", "clear_CardsFlipped", "update_CardsFlipped", "update_NumCardsFlipped", "clear_CardsMatched", "update_CardsMatched", "update_Stars", "update_Win" ]),
     shuffle(cards) {
       this.deck.cards = [];
       var currentIndex = cards.length,
@@ -80,11 +80,45 @@ export default {
       }
       // only allow flips if there are < or = 2 flipped cards
       if (this.numCardsFlipped < 2) {
-      card.flipped = true;
-      this.update_NumCardsFlipped({ num: this.numCardsFlipped + 1 });
-      this.update_CardsFlipped({ cards: card });
+        card.flipped = true;
+        this.update_NumCardsFlipped({ num: this.numCardsFlipped + 1 });
+        this.update_CardsFlipped({ cards: card });
+        // MATCH
+        if (
+          this.numCardsFlipped === 2 &&
+          this.cardsFlipped[0].name === this.cardsFlipped[1].name
+          ) {
+          for (let i = 0; i < this.deck.cards.length; i++) {
+              if (this.deck.cards[i].name === this.cardsFlipped[0].name) {
+              this.deck.cards[i].match = true;
+              }
+          }
+
+          this.update_CardsMatched({ cards: this.cardsFlipped });
+          this.clear_CardsFlipped({ cards: [] });
+          this.update_NumCardsFlipped({ num: 0 });
+        }
+          // NO MATCH
+        else if (
+          this.numCardsFlipped === 2 &&
+          this.cardsFlipped[0].name !== this.cardsFlipped[1].name
+          ) {
+          // Wait before closing mismatched card
+          setTimeout(() => {
+              for (let i = 0; i < this.deck.cards.length; i++) {
+              if (this.deck.cards[i].flipped && !this.deck.cards[i].match) {
+                  this.deck.cards[i].flipped = false;
+                  this.deck.cards[i].close = true;
+              }
+              }
+
+              this.clear_CardsFlipped({ cards: [] });
+              this.update_NumCardsFlipped({ num: 0 });
+              return;
+          }, 500);
+        }
       }
-    },
+    }
   },
   created() {
     this.shuffle(this.deck.cards);

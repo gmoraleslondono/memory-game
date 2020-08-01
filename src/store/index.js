@@ -10,6 +10,7 @@ export default new Vuex.Store({
     types: ["camera-retro", "bomb", "bug", "heart", "gift", "anchor", "paper-plane", "ambulance"],
     cardsFlipped: [],
     numCardsFlipped: 0,
+    cardsMatched: [],
   },
   getters: {
     deck: (state) => {
@@ -49,6 +50,12 @@ export default new Vuex.Store({
     UPDATE_NUMCARDSFLIPPED(state, payload) {
       state.numCardsFlipped = payload;
     },
+    CLEAR_CARDSMATCHED(state, payload) {
+      state.cardsMatched = payload;
+    },
+    UPDATE_CARDSMATCHED(state, payload) {
+        state.cardsMatched.push(payload);
+    },
   },
   actions: {
     update_NumMoves({ commit }, {moves}) {
@@ -62,6 +69,12 @@ export default new Vuex.Store({
     },
     update_NumCardsFlipped({ commit }, { num }) {
         commit("UPDATE_NUMCARDSFLIPPED", num);
+    },
+    clear_CardsMatched({ commit }, { cards }) {
+      commit("CLEAR_CARDSMATCHED", cards);
+    },
+    update_CardsMatched({ commit }, { cards }) {
+        commit("UPDATE_CARDSMATCHED", cards);
     },
   }
 })
