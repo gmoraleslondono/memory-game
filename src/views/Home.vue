@@ -198,6 +198,10 @@ export default {
   border-radius: 20px;
 }
 
+.restart:focus {
+  outline: none;
+}
+
 .fa-repeat {
   background-color: $orange;
 }
