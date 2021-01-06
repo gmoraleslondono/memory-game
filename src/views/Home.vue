@@ -19,7 +19,7 @@
         <section id="cards">
           <ul class="cards">
             <li class="cardItem" v-for="(card, index) in this.deck.cards" :key="index">
-              {{card.name}}
+              <!-- {{card.name}} -->
               <button :class="[card.match ? 'card match' : card.flipped ? 'card show' : card.close ? 'card close' : 'card']"
               @click="flipCard(card)"
               >
