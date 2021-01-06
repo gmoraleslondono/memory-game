@@ -40,6 +40,11 @@ header {
   justify-content: space-between;
   margin: 5%;
 }
+.nav {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
 .nav a {
   text-decoration: none;
   font-size: 20px;
