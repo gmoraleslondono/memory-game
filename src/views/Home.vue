@@ -213,6 +213,7 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0.5em;
   padding: 0;
+  gap: 16px;
 
   .cardItem {
     list-style: none;
@@ -241,7 +242,8 @@ export default {
 
   .match {
     cursor: default;
-    background: #0e4b5a url(/img/fabric.5959b418.png);
+    // background: #0e4b5a url(/img/fabric.5959b418.png);
+    border: 1px solid greenyellow;
     font-size: 33px;
     animation-name: match-animation;
     -webkit-animation-name: match-animation;
