@@ -265,4 +265,10 @@ export default {
   }
 }
 
+@media only screen and (min-width: 479px){
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 </style>
